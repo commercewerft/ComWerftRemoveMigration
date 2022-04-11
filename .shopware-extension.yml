@@ -1,0 +1,65 @@
+store:
+    availabilities:
+        - German
+        - International
+    default_locale: de_DE
+    localizations:
+        - de_DE
+        - en_GB
+    categories:
+        - MigrationTools
+    type: extension
+    icon: src/Resources/store/icon.png
+    automatic_bugfix_version_compatibility: false
+    description:
+        de: '<p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Bei der Migration von Magento 1 und Magento 2 zu Shopware 6 wird häufig das Plugin Migrations-Assistent und Magento-Migration-Profil genutzt. Wenn man Kunden aus Magento migriert, muss dieses Plugin immer installiert bleiben, da ansonsten eine Fehlermeldung erscheint und die Kunden sich mit den alten Passwörtern nicht mehr einloggen können.</p>'
+        en: '<p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Enables you to remove the shopware migration plugin including magento migration</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><br></p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">When you have done a Migration from Magento 1 or Magento 2 with customers, you are not allowed to disable these modules, as they are needed for the login of the customers created within Magento.&nbsp;</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><br></p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">After the customers login, Shopware replaces the encoder for the password and uses its internal encoder. So you have to wait untill all customers have logged in.&nbsp;</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><br></p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">If you disable the migration plugins, you will get an error message, when a migrated customer logs in first.&nbsp;</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><br></p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">This small plugin uses only the password-encoders. So you are able to uninstall SwagMigrationAssistant and SwagMigrationMagento.</p>'
+    installation_manual:
+        de: '<p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Shopware Migrations-Assistent deaktivieren bzw. deinstallieren</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Shopware Magento-Migration deaktiveren bzw. deinstallieren</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Diese Plugin installieren und aktivieren</p>'
+        en: '<p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Shopware Migrations-Assistent can be deactivated and uninstalled</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Shopware Magento-Migration&nbsp;can be deactivated and uninstalled</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Install this plugin and activate it</p>'
+    tags:
+        de: []
+        en: []
+    videos:
+        de: []
+        en: []
+    highlights:
+        de:
+            - Ersetzt Shopware Migrations-Assistent nach abgeschlossener Migration
+            - Ersetzt Shopware Magento-Migration-Profil nach abgeschlossener Migration
+            - Keine Pflege-Aufwand mehr für diese Plugins
+        en:
+            - replaces Shopware Migrations-Assistent after successful migration
+            - replaces Shopware Magento-Migration-Profil after successful migration
+            - no more maintenance for the above plugins
+    features:
+        de:
+            - ""
+        en:
+            - ""
+    faq:
+        de: []
+        en: []
+    images:
+        - file: src/Resources/store/img-0.png
+          activate:
+            de: true
+            en: true
+          preview:
+            de: true
+            en: true
+          priority: 0
+build:
+    zip:
+        composer:
+            enabled: false
+            before_hooks: []
+            after_hooks: []
+        assets:
+            enabled: false
+            before_hooks: []
+            after_hooks: []
+        pack:
+            excludes:
+                paths: []
+            before_hooks: []

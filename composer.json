@@ -1,0 +1,40 @@
+{
+  "name": "comwerft/remove-magento-migration",
+  "version": "0.1.0",
+  "description": "Enables you to remove the shopware 6 migration plugin including magento migration",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "require": {
+    "shopware/core": "~6.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "ComWerft\\RemoveMigration\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "CommerceWerft Ralf Siepker",
+      "homepage": "https://www.commercewerft.de"
+    }
+  ],
+  "extra": {
+    "shopware-plugin-class": "ComWerft\\RemoveMigration\\ComWerftRemoveMigration",
+    "label": {
+      "de-DE": "Hiermit kann das Shopware 6 Migrationstool inkl. Magento Migration entfernt werden",
+      "en-GB": "Enables you to remove the shopware 6 migration plugin including magento migration"
+    },
+    "description": {
+      "de-DE": "Kleines Plugin für alle Kunden, die Ihren Magento-Shop mit dem Migrations-Assistent von Shopware migriert haben. Dieses kann entfernt werden. Kunden können sich weiter einloggen.",
+      "en-GB": "A small plugin for shop owners who have migrated from magento to shopware. Enables you to remove the shopware 6 migration plugin including magento migration. Customers can still login."
+    },
+    "manufacturerLink": {
+      "de-DE": "https://github.com/commercewerft/ComWerftRemoveMigration.git",
+      "en-GB": "https://github.com/commercewerft/ComWerftRemoveMigration.git"
+    },
+    "supportLink": {
+      "de-DE": "https://github.com/commercewerft/ComWerftRemoveMigration/issues",
+      "en-GB": "https://github.com/commercewerft/ComWerftRemoveMigration/issues"
+    }
+  }
+}

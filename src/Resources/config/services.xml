@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Magento 1 LegacyEncoder -->
+        <service id="ComWerft\RemoveMigration\Profile\Magento19\PasswordEncoder\MagentoEncoder">
+            <tag name="shopware.legacy_encoder"/>
+        </service>
+
+        <!-- Magento 2 - LegacyEncoder -->
+        <service id="ComWerft\RemoveMigration\Profile\Magento2\PasswordEncoder\Magento2Md5Encoder">
+            <tag name="shopware.legacy_encoder"/>
+        </service>
+
+        <service id="ComWerft\RemoveMigration\Profile\Magento2\PasswordEncoder\Magento2Sha256Encoder">
+            <tag name="shopware.legacy_encoder"/>
+        </service>
+
+        <service id="ComWerft\RemoveMigration\Profile\Magento2\PasswordEncoder\Magento2Argon2Id13Encoder">
+            <tag name="shopware.legacy_encoder"/>
+        </service>
+    </services>
+</container>
