@@ -55,6 +55,14 @@ store:
             de: true
             en: true
           priority: 0
+        - file: src/Resources/store/img-1.png
+          activate:
+            de: true
+            en: false
+          preview:
+            de: false
+            en: false
+          priority: 1
 build:
     zip:
         composer:
