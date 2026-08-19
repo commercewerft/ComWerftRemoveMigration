@@ -58,7 +58,7 @@ store:
         - file: src/Resources/store/img-1.png
           activate:
             de: true
-            en: false
+            en: true
           preview:
             de: false
             en: false
