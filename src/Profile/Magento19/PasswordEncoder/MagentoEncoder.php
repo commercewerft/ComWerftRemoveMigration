@@ -6,14 +6,16 @@ use Shopware\Core\Checkout\Customer\Password\LegacyEncoder\LegacyEncoderInterfac
 
 class MagentoEncoder implements LegacyEncoderInterface
 {
+    public const NAME = 'Magento19';
+
     public function getName(): string
     {
-        return 'Magento19';
+        return self::NAME;
     }
 
-    public function isPasswordValid(string $password, string $hash): bool
+    public function isPasswordValid(#[\SensitiveParameter] string $password, string $hash): bool
     {
-        if (\mb_strpos($hash, ':') !== false) {
+        if (\str_contains($hash, ':')) {
             [$hash, $salt] = \explode(':', $hash);
             $password = $salt . $password;
         }

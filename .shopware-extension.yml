@@ -10,7 +10,7 @@ store:
         - MigrationTools
     type: extension
     icon: src/Resources/store/icon.png
-    automatic_bugfix_version_compatibility: false
+    automatic_bugfix_version_compatibility: true
     description:
         de: '<p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Bei der Migration von Magento 1 und Magento 2 zu Shopware 6 wird häufig das Plugin Migrations-Assistent und Magento-Migration-Profil genutzt. Wenn man Kunden aus Magento migriert, muss dieses Plugin immer installiert bleiben, da ansonsten eine Fehlermeldung erscheint und die Kunden sich mit den alten Passwörtern nicht mehr einloggen können.</p>'
         en: '<p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Enables you to remove the shopware migration plugin including magento migration</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><br></p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">When you have done a Migration from Magento 1 or Magento 2 with customers, you are not allowed to disable these modules, as they are needed for the login of the customers created within Magento.&nbsp;</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><br></p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">After the customers login, Shopware replaces the encoder for the password and uses its internal encoder. So you have to wait untill all customers have logged in.&nbsp;</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><br></p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">If you disable the migration plugins, you will get an error message, when a migrated customer logs in first.&nbsp;</p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><br></p><p class="p1" style="font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 13px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">This small plugin uses only the password-encoders. So you are able to uninstall SwagMigrationAssistant and SwagMigrationMagento.</p>'
@@ -34,9 +34,15 @@ store:
             - no more maintenance for the above plugins
     features:
         de:
-            - ""
+            - Passwort-Encoder für Magento 1.9 (md5, sha256, sha512, bcrypt – gesalzen und ungesalzen)
+            - Passwort-Encoder für Magento 2 (md5, sha256, Argon2id13)
+            - Migrierte Kunden können sich nach der Deinstallation weiter mit ihrem alten Passwort anmelden
+            - Keine Datenbank-Änderungen, keine Konfiguration, kein Administrations-Modul
         en:
-            - ""
+            - Password encoders for Magento 1.9 (md5, sha256, sha512, bcrypt – salted and unsalted)
+            - Password encoders for Magento 2 (md5, sha256, Argon2id13)
+            - Migrated customers keep logging in with their old password after uninstalling
+            - No database changes, no configuration, no administration module
     faq:
         de: []
         en: []
@@ -61,5 +67,9 @@ build:
             after_hooks: []
         pack:
             excludes:
-                paths: []
+                paths:
+                    - tests
+                    - phpunit.xml
+                    - .phpunit.cache
+                    - .gitignore
             before_hooks: []

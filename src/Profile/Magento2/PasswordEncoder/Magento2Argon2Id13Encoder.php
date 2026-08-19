@@ -13,28 +13,45 @@ class Magento2Argon2Id13Encoder implements LegacyEncoderInterface
         return self::NAME;
     }
 
-    public function isPasswordValid(string $password, string $hash): bool
+    public function isPasswordValid(#[\SensitiveParameter] string $password, string $hash): bool
     {
-        if (\mb_strpos($hash, ':') === false) {
-            return false;
-        }
-        [$hash, $salt, $version] = \explode(':', $hash);
+        $parts = \explode(':', $hash, 3);
 
-        if ($version !== '2' || !\defined('SODIUM_CRYPTO_PWHASH_ALG_ARGON2ID13') || !\extension_loaded('sodium')) {
+        if (\count($parts) !== 3) {
             return false;
         }
 
-        $challengeHash = \bin2hex(
-            \sodium_crypto_pwhash(
-                \SODIUM_CRYPTO_SIGN_SEEDBYTES,
-                $password,
-                $salt,
-                \SODIUM_CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE,
-                \SODIUM_CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE,
-                (int) $version
-            )
-        );
+        [$expectedHash, $salt, $version] = $parts;
 
-        return \hash_equals($hash, $challengeHash);
+        if ($version !== '2'
+            || $password === ''
+            || !\extension_loaded('sodium')
+            || !\defined('SODIUM_CRYPTO_PWHASH_ALG_ARGON2ID13')
+        ) {
+            return false;
+        }
+
+        // sodium_crypto_pwhash() throws on a salt of the wrong length. A stored hash must never
+        // be able to turn a login attempt into a 500.
+        if (\strlen($salt) !== \SODIUM_CRYPTO_PWHASH_SALTBYTES) {
+            return false;
+        }
+
+        try {
+            $challengeHash = \bin2hex(
+                \sodium_crypto_pwhash(
+                    \SODIUM_CRYPTO_SIGN_SEEDBYTES,
+                    $password,
+                    $salt,
+                    \SODIUM_CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE,
+                    \SODIUM_CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE,
+                    \SODIUM_CRYPTO_PWHASH_ALG_ARGON2ID13
+                )
+            );
+        } catch (\SodiumException) {
+            return false;
+        }
+
+        return \hash_equals($expectedHash, $challengeHash);
     }
 }

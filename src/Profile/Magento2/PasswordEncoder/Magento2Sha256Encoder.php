@@ -13,12 +13,15 @@ class Magento2Sha256Encoder implements LegacyEncoderInterface
         return self::NAME;
     }
 
-    public function isPasswordValid(string $password, string $hash): bool
+    public function isPasswordValid(#[\SensitiveParameter] string $password, string $hash): bool
     {
-        if (\mb_strpos($hash, ':') === false) {
+        $parts = \explode(':', $hash, 3);
+
+        if (\count($parts) !== 3) {
             return false;
         }
-        [$sha256, $salt, $version] = \explode(':', $hash, 3);
+
+        [$sha256, $salt, $version] = $parts;
 
         if ($version !== '1') {
             return false;
